@@ -1,0 +1,26 @@
+import pandas as pd
+import datetime
+
+mainFrame = pd.read_parquet(r"C:\Users\prof0\OneDrive\Documents\Data_practice\HFT1_All.parquet")
+print(mainFrame)
+firstd = mainFrame.iloc[3]['timestamp']
+nextd = mainFrame.iloc[4]['timestamp']
+print(firstd)
+print(nextd)
+
+deltaS = nextd - firstd
+print(deltaS)
+
+deltaS.total_seconds()
+
+deltaS = mainFrame['timestamp'].diff()
+mainFrame['deltaT'] = deltaS
+
+
+def tosec(row):
+    return row['deltaT'].total_seconds()
+
+
+mainFrame['deltaT'] = mainFrame.apply(tosec, axis=1)
+
+print(mainFrame)
