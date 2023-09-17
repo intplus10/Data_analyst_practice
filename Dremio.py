@@ -7,14 +7,14 @@ import plotly.express as px
 host = 'ft.vitesco.io'
 port = 32010
 uid = 'uic89063'
-pwd = 'Zdr6tg080//Zdr6tg080'
+pwd = 'yourpwd'
 
 # If you're using a MacOS, the driver is located here -> /Library/Dremio/ODBC/lib/libarrow-flight-sql-odbc.dylib; the below is for linux:
 driver = "/opt/arrow-flight-sql-odbc-driver/lib64/libarrow-odbc.so.0.9.1.168"
 
 # Set UseEncryption accordingly below:
 DSN = "Dremio 64"
-cnxn = pyodbc.connect(DSN=DSN, autocommit=True, PWD='Zdr6tg080//Zdr6tg080')
+cnxn = pyodbc.connect(DSN=DSN, autocommit=True, PWD=pwd)
 # cnxn = pyodbc.connect("Driver={};ConnectionType=Direct;HOST={};PORT={};AuthenticationType=Plain;UID={};PWD={}".format(driver, host, port,uid, pwd),autocommit=True, UseEncryption=False)
 
 sql = 'SELECT * FROM FlatTable.DEB."Default"."DEB_STATION_DBASS138_L01S01_VAL_RECENT"'
